@@ -1,59 +1,42 @@
-# Kickstart-mantrajs-webpack
+# Installation
 
-Kickstart a project with Meteor, Mantra, React and FlowRouter fast!
+### Node / NPM
+Ce projet a été testé avec node@6.2 / npm@3.
 
-1. git clone https://github.com/mantrajs/kickstart-mantrajs-webpack.git
-1. cd kickstart-mantrajs-webpack
-1. npm install
-1. meteor
+Il est conseillé d’installer nvm qui permet d’avoir toutes les versions de node voulues sur une même machine. Voici le lien : [NVM](https://github.com/creationix/nvm)
 
-You can try [other kickstart projects](https://github.com/thereactivestack/kickstart) with ReactRouter, FlowRouter or Redux.
+### Configuration Gitlab
 
-# Hot Module Reload (HMR)
+* Se créer un compte sur Gitlab.com.
+* Demander à Alex, Julien ou Théo de t'ajouter au projet assipe.
+* Créer une clé ssh via la commande ssh-keygen.
+* Ajouter la clé sur https://gitlab.com/profile/keys
 
-Mantra prefers to use stateless (bare) react components. These components do not support HMR. If you want to use HRM, you need to use standard React components:
+### Lancer le projet
 
-```javascript
-// NO support for HRM
-const Navigations = () => (
-  <div>
-    <b> Navigations: </b>
-  </div>
-);
-
-// FULL Support for HRM
-class NewPost extends React.Component {
-  render() {
-    return <div>Text</div>;
-  }
-}
+```bash
+git clone git@gitlab.com:assipe/assipe.git
+cd assipe
+npm install
+meteor
 ```
 
-# Production
-You can use meteor run, meteor build, mup or anything working with Meteor.
 
-## Run in production mode
-`meteor run --production`
+# A bien comprendre
 
-## Build for production
-`meteor build .`
+*	[ES2015 : nouvelle spécification javascript](https://babeljs.io/docs/learn-es2015/)
+* React
+* Meteor
+* [Mantra](https://kadirahq.github.io/mantra)  : Principes d’architecture pour Meteor et React
+*	Hot reloading : permet de recharger tes composants React sans recharger toute la page quand tu fais une modification de code. Par contre faut suivre cette prérogative pour que ça marche : https://github.com/mantrajs/kickstart-mantrajs-webpack#hot-module-reload-hmr
 
-## Deploy with Meteor-up
-`mup deploy`
 
-# Cordova
-You need to do those 3 steps to make it works with iOS or Android:
+# Librairies utilisées
+*	[React-bootstrap](https://react-bootstrap.github.io/) : pour utiliser les composants bootstrap avec react
+* 	[Formsy-react](https://github.com/twisty/formsy-react-components) pour gérer les formulaires
+* Flow router : pour gérer les différentes routes
 
-1. Add the platform to your Meteor project
+# Outils utiles
+* Perso j’utilise Atom comme éditeur mais c’est comme tu veux évidemment
+* https://github.com/mantrajs/mantra-cli permet de générer des fichiers de type Mantra : tu te places dans le dossier src/ et tu executes les commandes que tu veux.
 
-    ```javascript
-    meteor add-platform ios
-    meteor add-platform android
-    ```
-1. Allow access to your dev server in your `/mobile-config.js` file:
-
-    ```javascript
-    App.accessRule('http://192.168.1.100:3500/*');
-    ```
-
-1. Replace localhost by your local ip address in `webpack.json`.
