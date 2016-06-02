@@ -7,7 +7,7 @@ import { authComposer } from 'client/configs/composers.js';
 
 class AuthCheck extends Component {
   render() {
-    const { content, loggingIn, user } = this.props;
+    const { content, loggingIn, user, logout } = this.props;
 
     if(loggingIn) return null;
 
@@ -27,10 +27,14 @@ class AuthCheck extends Component {
             </Navbar.Brand>
             <Navbar.Toggle />
           </Navbar.Header>
-          <Nav>
-            <NavItem eventKey={1} href="#">Accueil</NavItem>
-            <NavItem eventKey={2} href="/new-post">New post</NavItem>
-          </Nav>
+          <Navbar.Collapse>
+            <Nav>
+              <NavItem eventKey={1} href="#">Accueil</NavItem>
+            </Nav>
+            <Nav pullRight>
+              <NavItem eventKey={1} onClick={logout}>Déconnexion</NavItem>
+            </Nav>
+          </Navbar.Collapse>
         </Navbar>
 
         {content()}

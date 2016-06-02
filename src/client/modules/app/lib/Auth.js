@@ -10,8 +10,9 @@ const _authComposer = ({context}, onData) => {
   });
 };
 
-const _authDepsMapper = (context) => ({
-  context: () => context
+const _authDepsMapper = (context, actions) => ({
+  context: () => context,
+  logout: actions.account.logout
 });
 
 export default component => composeAll(

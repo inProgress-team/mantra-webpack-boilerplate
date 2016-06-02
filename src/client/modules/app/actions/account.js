@@ -9,5 +9,8 @@ export default {
       }
       //FlowRouter.go('/account');
     });
+  },
+  logout({ Meteor }) {
+    Meteor.logout();
   }
 }
