@@ -1,5 +1,5 @@
 import { Meteor } from 'meteor/meteor';
-import { Astro, Class } from 'meteor/jagi:astronomy';
+import { Class } from 'meteor/jagi:astronomy';
 
 const UserProfile = Class.create({
   name: 'UserProfile',
@@ -15,14 +15,14 @@ const User = Class.create({
   fields: {
     createdAt: Date,
     emails: {
-      type: [Object],
-      default: function() {
+      type: [ Object ],
+      default() {
         return [];
       }
     },
     profile: {
       type: UserProfile,
-      default: function() {
+      default() {
         return {};
       }
     }

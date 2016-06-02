@@ -4,7 +4,7 @@ import './stylesheets/bootstrap-paper.min.css';
 
 export default {
   routes,
-  load(context) {
+  load() {
 
   }
 };

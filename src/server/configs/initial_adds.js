@@ -1,8 +1,11 @@
+import { Accounts } from 'meteor/accounts-base';
+import { Roles } from 'meteor/alanning:roles';
+
 import { User } from 'lib/collections';
 
 export default function () {
 
-  if(!User.findOne()) {
+  if (!User.findOne()) {
     const user1Id = Accounts.createUser({
       email: 'theo.mathieu@in-progress.io',
       password: 'aaaa',
@@ -13,6 +16,6 @@ export default function () {
     });
     const user1 = User.findOne(user1Id);
     Accounts.addEmail(user1Id, user1.emails[0].address, true);
-    Roles.addUsersToRoles(user1Id, ['super-admin']);
+    Roles.addUsersToRoles(user1Id, [ 'super-admin' ]);
   }
 }

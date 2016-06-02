@@ -7,13 +7,14 @@ import { authComposer } from 'client/configs/composers.js';
 
 class AuthCheck extends Component {
   render() {
-    const { content, loggingIn, user, logout } = this.props;
+    const { content, loggingIn, user, logout, context } = this.props;
+    const FlowRouter = context().FlowRouter;
 
-    if(loggingIn) return null;
+    if (loggingIn) { return null; }
 
-    if(!user) {
-      setTimeout(()=>{
-        FlowRouter.go('/login')
+    if (!user) {
+      setTimeout(() => {
+        FlowRouter.go('/login');
       });
       return null;
     }
@@ -43,4 +44,4 @@ class AuthCheck extends Component {
   }
 }
 
-export default authComposer(AuthCheck)
+export default authComposer(AuthCheck);

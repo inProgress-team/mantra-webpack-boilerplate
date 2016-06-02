@@ -1,9 +1,9 @@
-import {useDeps, composeAll, composeWithTracker, compose} from 'mantra-core';
+import {useDeps, composeAll, composeWithTracker} from 'mantra-core';
 
 import Login from '../components/login.jsx';
 
 export const composer = ({context}, onData) => {
-  const {LocalState} = context();
+  const { LocalState } = context();
 
   onData(null, {error: LocalState.get('LOGIN_ERROR')});
 };

@@ -4,11 +4,12 @@ import { authComposer } from 'client/configs/composers.js';
 
 class NotAuthCheck extends Component {
   render() {
-    const { content, loggingIn, user } = this.props;
+    const { content, user, context } = this.props;
+    const FlowRouter = context().FlowRouter;
 
-    if(user) {
-      setTimeout(()=>{
-        FlowRouter.go('/')
+    if (user) {
+      setTimeout(() => {
+        FlowRouter.go('/');
       });
       return null;
     }
@@ -22,4 +23,4 @@ class NotAuthCheck extends Component {
   }
 }
 
-export default authComposer(NotAuthCheck)
+export default authComposer(NotAuthCheck);

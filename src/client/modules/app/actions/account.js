@@ -7,10 +7,9 @@ export default {
       if (err && err.reason) {
         return LocalState.set('LOGIN_ERROR', err.reason);
       }
-      //FlowRouter.go('/account');
     });
   },
   logout({ Meteor }) {
     Meteor.logout();
   }
-}
+};

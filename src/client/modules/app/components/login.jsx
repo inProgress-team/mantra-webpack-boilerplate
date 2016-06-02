@@ -12,7 +12,9 @@ export default class Login extends Component {
     return (
       <div className="container-fluid">
         <Form layout="vertical" onValidSubmit={login} noValidate>
-          <Input name="email" type="email" label="Votre email" required validations="isEmail" validationError="N'est pas un email." />
+          <Input name="email" type="email" label="Votre email"
+                 required validations="isEmail" validationError="N'est pas un email."
+          />
           <Input name="password" type="password" label="Votre mot de passe" required />
 
           <Button bsStyle="primary" type="submit">Se connecter</Button>
