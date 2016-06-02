@@ -6,8 +6,6 @@ class NotAuthCheck extends Component {
   render() {
     const { content, loggingIn, user } = this.props;
 
-    if(loggingIn) return null;
-
     if(user) {
       setTimeout(()=>{
         FlowRouter.go('/')
@@ -17,7 +15,7 @@ class NotAuthCheck extends Component {
 
     return (
       <div>
-        NotAuthCheck
+        <h1>Not auth check</h1>
         {content()}
       </div>
     );
