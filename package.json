@@ -14,7 +14,7 @@
   "dependencies": {
     "domready": "^1.0.8",
     "formsy-react": "^0.18.0",
-    "formsy-react-components": "https://github.com/Mokto/formsy-react-components",
+    "formsy-react-components": "https://github.com/Mokto/formsy-react-components#form-component",
     "mantra-core": "^1.2.0",
     "react": "^15.x.x",
     "react-addons-create-fragment": "^15.x.x",
