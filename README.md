@@ -22,7 +22,7 @@ git clone git@gitlab.com:assipe/assipe.git
 cd assipe
 npm install
 meteor (pour lancer le projet)
-npm test (pour lancer les tests)
+npm test-watch (pour lancer les tests)
 ```
 
 
