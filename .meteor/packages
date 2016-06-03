@@ -24,5 +24,3 @@ standard-minifier-js
 react-meteor-data
 jagi:astronomy
 alanning:roles
-dispatch:mocha-browser
-dispatch:mocha-phantomjs

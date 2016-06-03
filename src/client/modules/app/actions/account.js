@@ -11,5 +11,8 @@ export default {
   },
   logout({ Meteor }) {
     Meteor.logout();
+  },
+  clearErrors({LocalState}) {
+    return LocalState.set('LOGIN_ERROR', null);
   }
 };

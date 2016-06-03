@@ -15,6 +15,6 @@ describe('core.containers.dashboard', () => {
 //      return Collections;
 //    };
 
-    it('should do something');
+
   });
 });

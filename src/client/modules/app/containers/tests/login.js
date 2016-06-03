@@ -15,6 +15,6 @@ describe('app.containers.login', () => {
 //      return Collections;
 //    };
 
-    it('should do something');
+    //it('should do something');
   });
 });

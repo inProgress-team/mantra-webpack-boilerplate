@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { FlowRouter } from 'meteor/kadira:flow-router';
+//import { FlowRouter } from 'meteor/kadira:flow-router';
 
 import Navbar from 'react-bootstrap/lib/Navbar';
 import Nav from 'react-bootstrap/lib/Nav';
@@ -7,14 +7,12 @@ import NavItem from 'react-bootstrap/lib/NavItem';
 
 export default class AuthCheck extends Component {
   render() {
-    const { content, loggingIn, user, logout } = this.props;
+    const { content, loggingIn, user, logout, FlowRouter } = this.props;
 
     if (loggingIn) { return null; }
 
     if (!user) {
-      setTimeout(() => {
-        FlowRouter.go('/login');
-      });
+      FlowRouter.go('/login');
       return null;
     }
 

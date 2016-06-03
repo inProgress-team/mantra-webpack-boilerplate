@@ -12,6 +12,7 @@ const _authComposer = ({context}, onData) => {
 
 const _authDepsMapper = (context, actions) => ({
   context: () => context,
+  FlowRouter: context.FlowRouter,
   logout: actions.account.logout
 });
 
