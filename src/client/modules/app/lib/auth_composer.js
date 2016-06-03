@@ -1,6 +1,6 @@
 import {useDeps, composeWithTracker, composeAll} from 'mantra-core';
 
-const _authComposer = ({context}, onData) => {
+export const composer = ({context}, onData) => {
 
   const {Meteor} = context();
 
@@ -10,13 +10,13 @@ const _authComposer = ({context}, onData) => {
   });
 };
 
-const _authDepsMapper = (context, actions) => ({
+export const depsMapper = (context, actions) => ({
   context: () => context,
   FlowRouter: context.FlowRouter,
   logout: actions.account.logout
 });
 
 export default component => composeAll(
-    composeWithTracker(_authComposer),
-    useDeps(_authDepsMapper)
+    composeWithTracker(composer),
+    useDeps(depsMapper)
 )(component);

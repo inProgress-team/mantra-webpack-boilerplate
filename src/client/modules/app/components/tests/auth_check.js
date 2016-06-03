@@ -3,11 +3,17 @@ const {describe, it} = global;
 import sinon from 'sinon';
 import {expect} from 'chai';
 import {shallow} from 'enzyme';
-import AuthCheck from '../auth_check';
+import AuthCheck from '../auth_check.jsx';
 
 import Navbar from 'react-bootstrap/lib/Navbar';
 
 describe('app.components.auth_check', function () {
+
+  // As a user
+  // I want to be redirected on Login page if I'm not logged in
+  // And if I'm logged in
+  // => I want to see a navbar containing navigation options
+  // => And I want to see the content for the page I'm on
 
   const defaultContext = { FlowRouter: { go: () => {} } };
 
