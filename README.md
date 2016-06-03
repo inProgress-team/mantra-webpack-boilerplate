@@ -53,3 +53,9 @@ npm test (pour lancer les tests)
   * npm run lint => ne renvoit pas d'erreur (tu peux lancer npm run lintfix pour corriger automatiquement un maximum de problèmes)
   * npm test => fonctionne
 * Enfin si tout est bon, tu peux créer une pull request pour merger ta branch dans master. Là je ferai une review de ton code, te donnerai mon avis avant de merge tout ça.
+
+
+## TODO
+
+* Storybook [Example app](https://github.com/mantrajs/mantra-sample-blog-app)
+* Acheter Wallaby (payant :p)
