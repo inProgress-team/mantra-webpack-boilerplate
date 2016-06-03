@@ -5,9 +5,11 @@
   "main": "src/server.js",
   "browser": "src/client.js",
   "scripts": {
+    "start": "meteor",
     "lint": "eslint ./src/lib ./src/client ./src/server --ext .js --ext .jsx",
     "lintfix": "npm run lint -- --fix",
-    "test": "meteor test --driver-package=practicalmeteor:mocha --port=5005"
+    "test": "meteor test --driver-package=dispatch:mocha-browser --port=5005",
+    "testci": "meteor test --once --driver-package=dispatch:mocha-phantomjs"
   },
   "dependencies": {
     "domready": "^1.0.8",

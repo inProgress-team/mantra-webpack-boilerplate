@@ -29,7 +29,7 @@ export default class AuthCheck extends Component {
           </Navbar.Header>
           <Navbar.Collapse>
             <Nav>
-              <NavItem eventKey={1} href="#">Accueil</NavItem>
+              <NavItem eventKey={1} href="/">Accueil</NavItem>
             </Nav>
             <Nav pullRight>
               <NavItem eventKey={1} onClick={logout}>Déconnexion</NavItem>
@@ -37,7 +37,7 @@ export default class AuthCheck extends Component {
           </Navbar.Collapse>
         </Navbar>
 
-        {content()}
+        {typeof content == 'function' && content()}
       </div>
     );
   }
