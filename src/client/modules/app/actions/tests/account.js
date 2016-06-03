@@ -4,78 +4,81 @@ import {spy, stub} from 'sinon';
 import actions from '../account';
 
 describe('app.actions.account', () => {
+
+
+
   describe('login', () => {
 
-    /*
-    it('should reject if title is not there', () => {
+
+    it('should reset LOGIN_ERROR at first', () => {
       const LocalState = {set: spy()};
-      actions.create({LocalState}, null, 'content');
-      const args = LocalState.set.args[0];
+      const Meteor = {loginWithPassword: spy()};
 
-      expect(args[0]).to.be.equal('SAVING_ERROR');
-      expect(args[1]).to.match(/required/);
+      actions.login({LocalState, Meteor}, {});
+
+      expect(LocalState.set.calledWith('LOGIN_ERROR', null)).to.equal(true);
     });
 
-    it('should reject if content is not there', () => {
+    it('should call loginWithPassword with email and password', () => {
+      const email = 'contact@in-progress.io';
+      const password = 'mypassword';
+
       const LocalState = {set: spy()};
-      actions.create({LocalState}, 'title', null);
-      const args = LocalState.set.args[0];
+      const Meteor = {loginWithPassword: spy()};
 
-      expect(args[0]).to.be.equal('SAVING_ERROR');
-      expect(args[1]).to.match(/required/);
+      actions.login({LocalState, Meteor}, {email, password});
+
+      expect(Meteor.loginWithPassword.calledWith(email, password)).to.equal(true);
     });
 
-    it('should clear older LocalState for SAVING_ERROR', () => {
-      const Meteor = {uuid: spy(), call: spy()};
+    it('should set LOGIN_ERROR if there is an error', () => {
+
+      const reason = 'Error man';
+
       const LocalState = {set: spy()};
-      const FlowRouter = {go: spy()};
+      const Meteor = {loginWithPassword: stub()};
 
-      actions.create({LocalState, Meteor, FlowRouter}, 't', 'c');
-      expect(LocalState.set.args[0]).to.deep.equal([ 'SAVING_ERROR', null ]);
+      Meteor.loginWithPassword.callsArgWith(2, {reason});
+
+      actions.login({LocalState, Meteor}, {});
+
+      expect(LocalState.set.calledTwice).to.equal(true);
+
+      const args = LocalState.set.args;
+
+      expect(args[0]).to.deep.equal(['LOGIN_ERROR', null]);
+      expect(args[1]).to.deep.equal(['LOGIN_ERROR', reason]);
+
     });
 
-    it('should call Meteor.call to save the post', () => {
-      const Meteor = {uuid: () => 'id', call: spy()};
+    it('should not set LOGIN_ERROR if there is no error', () => {
+
       const LocalState = {set: spy()};
-      const FlowRouter = {go: spy()};
+      const Meteor = {loginWithPassword: stub()};
 
-      actions.create({LocalState, Meteor, FlowRouter}, 't', 'c');
-      const methodArgs = Meteor.call.args[0];
+      Meteor.loginWithPassword.callsArgWith(2);
 
-      expect(methodArgs.slice(0, 4)).to.deep.equal([
-        'posts.create', 'id', 't', 'c'
-      ]);
-      expect(methodArgs[4]).to.be.a('function');
+      actions.login({LocalState, Meteor}, {});
+
+      expect(LocalState.set.calledOnce).to.equal(true);
+
+      const args = LocalState.set.args;
+
+      expect(args[0]).to.deep.equal(['LOGIN_ERROR', null]);
+
     });
 
-    it('should redirect user to the post', () => {
-      const id = 'dsds';
-      const Meteor = {uuid: () => id, call: stub()};
-      const LocalState = {set: spy()};
-      const FlowRouter = {go: spy()};
-      Meteor.call.callsArg(4);
-
-      actions.create({Meteor, LocalState, FlowRouter}, 't', 'c');
-      expect(FlowRouter.go.args[0][0]).to.be.equal(`/post/${id}`);
-    });
-
-    describe('after Meteor.call', () => {
-      describe('if there is error', () => {
-        it('should set SAVING_ERROR with the error message', () => {
-          const Meteor = {uuid: () => 'id', call: stub()};
-          const LocalState = {set: spy()};
-          const FlowRouter = {go: spy()};
-          const err = {message: 'Oops'};
-          Meteor.call.callsArgWith(4, err);
-
-          actions.create({Meteor, LocalState, FlowRouter}, 't', 'c');
-          expect(LocalState.set.args[1]).to.deep.equal([ 'SAVING_ERROR', err.message ]);
-        });
-      });
-    });
-    */
   });
 
+  describe('logout', () => {
+
+    it('should call Meteor.logout', () => {
+      const Meteor = {logout: spy()};
+      actions.logout({Meteor});
+
+      expect(Meteor.logout.calledOnce).to.equal(true);
+    });
+  });
 
 
   describe('clearErrors', () => {
