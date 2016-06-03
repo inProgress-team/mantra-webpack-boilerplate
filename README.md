@@ -20,7 +20,8 @@ Il est conseillé d’installer nvm qui permet d’avoir toutes les versions de 
 git clone git@gitlab.com:assipe/assipe.git
 cd assipe
 npm install
-meteor
+meteor (pour lancer le projet)
+npm test (pour lancer les tests)
 ```
 
 
@@ -42,3 +43,12 @@ meteor
 * Perso j’utilise Atom comme éditeur mais c’est comme tu veux évidemment
 * https://github.com/mantrajs/mantra-cli permet de générer des fichiers de type Mantra : tu te places dans le dossier src/ et tu executes les commandes que tu veux.
 
+
+# Comment travailler ?
+
+* Chaque issue Gitlab = une nouvelle branche À PARTIR DE MASTER. Par exemple https://gitlab.com/assipe/assipe/issues/6 ([À voir en premier] Connexion) => création d'une branche feat/6-connexion
+* Sépare bien ton travail en petits commits, ça sera plus simple si tu veux revert et pour moi de review ton code
+* Une fois que ton travail est fini (réalisation technique + tests), il faut que tu t'assures que :
+  * npm run lint => ne renvoit pas d'erreur (tu peux lancer npm run lintfix pour corriger automatiquement un maximum de problèmes)
+  * npm test => fonctionne
+* Enfin si tout est bon, tu peux créer une pull request pour merger ta branch dans master. Là je ferai une review de ton code, te donnerai mon avis avant de merge tout ça.
