@@ -1,3 +1,5 @@
+[![Dependency Status](https://david-dm.org/inProgress-team/mantra-webpack-boilerplate.svg)](https://david-dm.org/inProgress-team/mantra-webpack-boilerplate)
+
 # Installation
 
 ### Node / NPM

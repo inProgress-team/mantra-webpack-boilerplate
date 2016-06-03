@@ -2,5 +2,13 @@
   "root": "src",
   "devServer": {
     "host": "localhost"
+  },
+  "hotMiddleware": {
+    "reload": true
+  },
+  "externals": {
+    "fs": "fs",
+    "net": "net",
+    "module": "module"
   }
 }
