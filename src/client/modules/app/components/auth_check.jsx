@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-//import { FlowRouter } from 'meteor/kadira:flow-router';
 
 import Navbar from 'react-bootstrap/lib/Navbar';
 import Nav from 'react-bootstrap/lib/Nav';
@@ -35,7 +34,7 @@ export default class AuthCheck extends Component {
           </Navbar.Collapse>
         </Navbar>
 
-        {typeof content == 'function' && content()}
+        {typeof content === 'function' && content()}
       </div>
     );
   }

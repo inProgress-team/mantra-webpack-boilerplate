@@ -1,7 +1,8 @@
-const {describe, it} = global;
-import {expect} from 'chai';
-import {stub, spy} from 'sinon';
-import {composer} from '../login';
+// const {describe, it} = global;
+const {describe} = global;
+// import {expect} from 'chai';
+// import {stub, spy} from 'sinon';
+// import {composer} from '../login';
 
 describe('app.containers.login', () => {
   describe('composer', () => {
@@ -15,6 +16,6 @@ describe('app.containers.login', () => {
 //      return Collections;
 //    };
 
-    //it('should do something');
+// it('should do something');
   });
 });

@@ -46,8 +46,8 @@ describe('app.actions.account', () => {
 
       const args = LocalState.set.args;
 
-      expect(args[0]).to.deep.equal(['LOGIN_ERROR', null]);
-      expect(args[1]).to.deep.equal(['LOGIN_ERROR', reason]);
+      expect(args[0]).to.deep.equal([ 'LOGIN_ERROR', null ]);
+      expect(args[1]).to.deep.equal([ 'LOGIN_ERROR', reason ]);
 
     });
 
@@ -64,7 +64,7 @@ describe('app.actions.account', () => {
 
       const args = LocalState.set.args;
 
-      expect(args[0]).to.deep.equal(['LOGIN_ERROR', null]);
+      expect(args[0]).to.deep.equal([ 'LOGIN_ERROR', null ]);
 
     });
 
