@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
+import { FlowRouter } from 'meteor/kadira:flow-router';
+
 import Navbar from 'react-bootstrap/lib/Navbar';
 import Nav from 'react-bootstrap/lib/Nav';
 import NavItem from 'react-bootstrap/lib/NavItem';
 
-import { authComposer } from 'client/configs/composers.js';
-
-class AuthCheck extends Component {
+export default class AuthCheck extends Component {
   render() {
-    const { content, loggingIn, user, logout, context } = this.props;
-    const FlowRouter = context().FlowRouter;
+    const { content, loggingIn, user, logout } = this.props;
 
     if (loggingIn) { return null; }
 
@@ -43,5 +42,3 @@ class AuthCheck extends Component {
     );
   }
 }
-
-export default authComposer(AuthCheck);

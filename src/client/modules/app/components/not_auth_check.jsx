@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 
-import { authComposer } from 'client/configs/composers.js';
-
-class NotAuthCheck extends Component {
+export default class NotAuthCheck extends Component {
   render() {
     const { content, user, context } = this.props;
     const FlowRouter = context().FlowRouter;
@@ -23,4 +21,3 @@ class NotAuthCheck extends Component {
   }
 }
 
-export default authComposer(NotAuthCheck);
