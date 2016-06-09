@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 
 export default class NotAuthCheck extends Component {
   render() {
-    const { content, user, context } = this.props;
-    const FlowRouter = context().FlowRouter;
+    const { content, user, FlowRouter } = this.props;
 
     if (user) {
       setTimeout(() => {

@@ -15,7 +15,7 @@ describe('app.components.auth_check', function () {
   // => I want to see a navbar containing navigation options
   // => And I want to see the content for the page I'm on
 
-  const defaultContext = { FlowRouter: { go: () => {} } };
+  const defaultContext = { FlowRouter: { go: spy() } };
 
   it('should render null if logging', function () {
     const el = shallow(<AuthCheck loggingIn={true} />);
@@ -27,7 +27,7 @@ describe('app.components.auth_check', function () {
     expect(el.type()).to.equal(null);
   });
 
-  it('should call go|login from FlowRouter if there is no user', function () {
+  it('should call go("login") from FlowRouter if there is no user', function () {
     const FlowRouter = { go: sinon.spy() };
     shallow(<AuthCheck user={null} FlowRouter={FlowRouter} />);
     expect(FlowRouter.go.calledOnce).to.equal(true);
