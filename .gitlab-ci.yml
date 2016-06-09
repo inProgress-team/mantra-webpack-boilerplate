@@ -1,11 +1,10 @@
-image: node:0.10.43
+image: node:4.2.2
 
-services:
-  - postgres:9.5.0
+cache:
+  paths:
+  - node_modules/
 
 all_tests:
   script:
-    - curl https://install.meteor.com | /bin/sh
-    - npm install -g spacejam
     - npm install
-    - npm run testci
+    - npm test
