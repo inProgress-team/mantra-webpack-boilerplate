@@ -11,7 +11,9 @@ export default class AuthCheck extends Component {
     if (loggingIn) { return null; }
 
     if (!user) {
-      FlowRouter.go('/login');
+      setTimeout(() => {
+        FlowRouter.go('/login');
+      });
       return null;
     }
 
