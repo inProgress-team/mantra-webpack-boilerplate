@@ -68,7 +68,7 @@ templates:
           import { expect } from 'chai';
           import { shallow } from 'enzyme';
           import Component from '../$name';
-          
+
           describe('test', () => {
             it('should not be null', () => {
               const el = shallow(<Component />);
@@ -175,6 +175,8 @@ templates:
       import { Meteor } from 'meteor/meteor';
       import { check } from 'meteor/check';
 
+      import { $2 } from '../../collections';
+
       export default function () {
         Meteor.publish("$1", function () {
           const selector = {};
@@ -192,13 +194,13 @@ templates:
     actions:
       - type: replace
         path: index.js
-        what: export default function () {
-        replace: import $name from "./$name";\nexport default function () {
+        what: /* IMPORTS */
+        replace: import $name from "./$name";\n/* IMPORTS */
 
       - type: replace
         path: index.js
-        what: export default function () {
-        replace: export default function () {\n  $name();
+        what: /* CALLS */
+        replace: $name();\n  /* CALLS */
 
   # Method template
   - name: server/methods
@@ -219,13 +221,13 @@ templates:
     actions:
       - type: replace
         path: index.js
-        what: export default function () {
-        replace: import $name from "./$name";\n\nexport default function () {
+        what: /* IMPORTS */
+        replace: import $name from "./$name";\n/* IMPORTS */
 
       - type: replace
         path: index.js
-        what: export default function () {
-        replace: export default function () {\n  $name();
+        what: /* CALLS */
+        replace: $name();\n  /* CALLS */
 
   - name: server
     create: true
@@ -246,12 +248,16 @@ templates:
   - name: publicationIndex
     create: true
     text: |
+      /* IMPORTS */
       export default function () {
+        /* CALLS */
       }
   - name: methodIndex
     create: true
     text: |
+      /* IMPORTS */
       export default function () {
+        /* CALLS */
       }
   # context template
   - name: context
