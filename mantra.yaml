@@ -3,31 +3,33 @@ templates:
   # Module action template
   - name: actions
     text: |
-      class Actions {
-        create({Meteor, LocalState}, myParam) {
-        },
+      export default {
+        $1({ Meteor }, param1) {
+
+        }
       };
-      let actions = new Actions();
-      export default actions;
+
     placeholders:
+      - Action name
     actions:
       - type: replace
         path: index.js
-        what: const actions = {
-        replace: import $name from "./$name";\nconst actions = {
+        what: /* IMPORTS */
+        replace: import $name from "./$name";\n/* IMPORTS */
       - type: replace
         path: index.js
-        what: const actions = {
-        replace: const actions = {\n $name,
+        what: /* CALLS */
+        replace: $name,\n  /* CALLS */
       - type: create
-        path: tests/$name_test.js
+        path: tests/$name.js
         text: |
-          const {describe, it} = global;
-          import {expect} from 'chai';
-          import {spy, stub} from 'sinon';
-          import actions from '../posts';
-          describe('module.actions.actionSet', () => {
-            describe('create', () => {
+          const { describe, it } = global;
+          import { expect } from 'chai';
+          import { spy, stub } from 'sinon';
+          import actions from '../$name';
+
+          describe('MODULE_NAME.actions.$name', () => {
+            describe('ACTION_NAME', () => {
               it('should reject if title is not there', () => {
                 const LocalState = {set: spy()};
                 actions.create({LocalState}, null, 'content');
@@ -40,10 +42,10 @@ templates:
   - name: actionIndex
     create: true
     text: |
-      const actions = {
-        // ACTION
+      /* IMPORTS */
+      export default {
+        /* CALLS */
       };
-      export default actions;
   # Module component template
   - name: storiesIndex
     create: true
@@ -69,7 +71,7 @@ templates:
           import { shallow } from 'enzyme';
           import Component from '../$name';
 
-          describe('test', () => {
+          describe('MODULE_NAME.components.$name', () => {
             it('should not be null', () => {
               const el = shallow(<Component />);
               expect(el).not.to.be.null;
@@ -165,6 +167,7 @@ templates:
     text: |
       import actions from "./actions";
       import routes from "./routes";
+
       export default {
         actions,
         routes
