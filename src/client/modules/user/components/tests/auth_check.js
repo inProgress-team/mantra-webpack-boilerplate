@@ -1,6 +1,6 @@
 import React from 'react';
 const {describe, it} = global;
-import sinon from 'sinon';
+import {spy, stub} from 'sinon';
 import {expect} from 'chai';
 import {shallow} from 'enzyme';
 import AuthCheck from '../auth_check.jsx';
@@ -27,11 +27,14 @@ describe('app.components.auth_check', function () {
     expect(el.type()).to.equal(null);
   });
 
-  it('should call go("login") from FlowRouter if there is no user', function () {
-    const FlowRouter = { go: sinon.spy() };
+  it('should call go("login") from FlowRouter if there is no user', function (done) {
+    const FlowRouter = { go: spy() };
     shallow(<AuthCheck user={null} FlowRouter={FlowRouter} />);
-    expect(FlowRouter.go.calledOnce).to.equal(true);
-    expect(FlowRouter.go.calledWith('/login')).to.equal(true);
+    setTimeout(()=>{
+      expect(FlowRouter.go.calledOnce).to.equal(true);
+      expect(FlowRouter.go.calledWith('/login')).to.equal(true);
+      done();
+    });
   });
 
 
