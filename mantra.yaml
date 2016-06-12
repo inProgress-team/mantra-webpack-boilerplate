@@ -51,23 +51,26 @@ templates:
       // imports
   - name: components
     text: |
-      import React from "react";
-      const Component = () => (
-        <div></div>
-      )
-      export default Component;
+      import React, { Component } from "react";
+
+      export default class $1 extends Component {
+        render() {
+          return null;
+        }
+      }
     placeholders:
       - Component Name
     actions:
       - type: create
-        path: tests/$name_test.js
+        path: tests/$name.js
         text: |
-          const {describe, it} = global;
-          import {expect} from 'chai';
-          import {shallow} from 'enzyme';
+          const { describe, it } = global;
+          import { expect } from 'chai';
+          import { shallow } from 'enzyme';
           import Component from '../$name';
+          
           describe('test', () => {
-            it('should display the post title', () => {
+            it('should not be null', () => {
               const el = shallow(<Component />);
               expect(el).not.to.be.null;
             });
@@ -78,6 +81,7 @@ templates:
           import React from 'react';
           import { storiesOf, action } from '@kadira/storybook';
           import Component from '../$name';
+
           storiesOf('module.$name', module)
             .add('default view', () => {
               return (
@@ -95,7 +99,7 @@ templates:
     text: |
       import { useDeps, composeAll, composeWithTracker } from 'mantra-core';
 
-      import $1 from '../components/$name.jsx';
+      import $1 from '../components/_____name_____.jsx';
 
       export const composer = ({context}, onData) => {
         const { Meteor } = context();
@@ -115,6 +119,10 @@ templates:
     placeholders:
       - Component Name
     actions:
+      - type: replace
+        path: $name.js
+        what: _____name_____.jsx';
+        replace: $name.jsx';
       - type: create
         path: tests/$name.js
         text: |
