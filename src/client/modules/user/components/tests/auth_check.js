@@ -1,8 +1,8 @@
 import React from 'react';
-const {describe, it} = global;
-import {spy, stub} from 'sinon';
-import {expect} from 'chai';
-import {shallow} from 'enzyme';
+const { describe, it } = global;
+import { spy } from 'sinon';
+import { expect } from 'chai';
+import { shallow } from 'enzyme';
 import AuthCheck from '../auth_check.jsx';
 
 import Navbar from 'react-bootstrap/lib/Navbar';

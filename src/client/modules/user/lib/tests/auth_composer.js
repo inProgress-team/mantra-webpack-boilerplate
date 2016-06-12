@@ -16,10 +16,11 @@ describe('app.lib.auth_composer', () => {
       return Meteor;
     };
 
-    it('should call onData with data', done => {
+    it('should call onData with data and no error', done => {
       const Meteor = getMeteor();
       const context = () => ({Meteor});
       const onData = (err, data) => {
+        expect(err).to.be.equal(null);
         expect(Meteor.loggingIn.calledOnce).to.be.equal(true);
         expect(Meteor.user.calledOnce).to.be.equal(true);
         expect(data).to.be.deep.equal({
@@ -27,7 +28,7 @@ describe('app.lib.auth_composer', () => {
           user: undefined
         });
         done();
-      }
+      };
 
       composer({context}, onData);
 

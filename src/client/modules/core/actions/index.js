@@ -1,8 +1,7 @@
-import test from "./test";
+import test from './test';
 /* IMPORTS */
 
 export default {
   test,
-/* CALLS */
-
+  /* CALLS */
 };

@@ -13,7 +13,10 @@
     "storybook": "start-storybook -p 9001"
   },
   "dependencies": {
+    "babel-eslint": "^6.0.4",
     "domready": "^1.0.8",
+    "eslint": "^2.12.0",
+    "eslint-plugin-react": "^5.1.1",
     "formsy-react": "^0.18.0",
     "formsy-react-components": "https://github.com/Mokto/formsy-react-components#form-component",
     "mantra-core": "^1.2.0",
