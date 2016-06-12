@@ -3,7 +3,7 @@ import initContext from './configs/context';
 
 // modules
 import coreModule from './modules/core';
-import appModule from './modules/app';
+import userModule from './modules/user';
 
 // init context
 const context = initContext();
@@ -11,5 +11,5 @@ const context = initContext();
 // create app
 const app = createApp(context);
 app.loadModule(coreModule);
-app.loadModule(appModule);
+app.loadModule(userModule);
 app.init();
