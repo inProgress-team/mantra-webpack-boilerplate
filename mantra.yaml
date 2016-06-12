@@ -39,6 +39,7 @@ templates:
               });
             });
           });
+
   - name: actionIndex
     create: true
     text: |
@@ -46,11 +47,13 @@ templates:
       export default {
         /* CALLS */
       };
+
   # Module component template
   - name: storiesIndex
     create: true
     text: |
       // imports
+
   - name: components
     text: |
       import React, { Component } from "react";
@@ -60,6 +63,7 @@ templates:
           return null;
         }
       }
+
     placeholders:
       - Component Name
     actions:
@@ -77,6 +81,7 @@ templates:
               expect(el).not.to.be.null;
             });
           });
+
       - type: create
         path: stories/$name_stories.js
         text: |
@@ -90,6 +95,7 @@ templates:
                 <Component />
               );
             })
+
       - type: replace
         path: stories/index.js
         what: // imports
@@ -140,6 +146,7 @@ templates:
               });
             });
           });
+
   # Module route template
   - name: route
     show: true
@@ -160,6 +167,7 @@ templates:
         //   }
         // });
       }
+
   # Module index template
   - name: module
     show: true
@@ -172,6 +180,7 @@ templates:
         actions,
         routes
       };
+
   # Server publication template
   - name: server/publications
     text: |
@@ -191,6 +200,7 @@ templates:
           return $2.find(selector, options);
         });
       }
+
     placeholders:
       - Publication Name
       - Collection
@@ -218,6 +228,7 @@ templates:
           }
         });
       }
+
     placeholders:
       - Method Name
       - Parameters
@@ -255,6 +266,7 @@ templates:
       export default function () {
         /* CALLS */
       }
+
   - name: methodIndex
     create: true
     text: |
@@ -262,6 +274,7 @@ templates:
       export default function () {
         /* CALLS */
       }
+
   # context template
   - name: context
     create: true
@@ -278,7 +291,6 @@ templates:
           FlowRouter,
           Collections,
           LocalState: new ReactiveDict(),
-          Tracker,
           Accounts
         };
       }
@@ -298,6 +310,7 @@ templates:
       const app = createApp(context);
       app.loadModule(coreModule);
       app.init();
+
     actions:
       - type: replace
         path: ../index.js
